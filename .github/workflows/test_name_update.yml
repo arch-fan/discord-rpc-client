@@ -29,4 +29,4 @@ jobs:
       env: 
         APP_ID: ${{ secrets.APP_ID }}
         AUTH_HEADER: ${{ secrets.AUTH_HEADER }}
-        APP_NAME: ${{ secrets.APP_NAME }}
+        APP_NAME: "TEST"
