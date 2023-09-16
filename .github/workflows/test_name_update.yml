@@ -1,0 +1,32 @@
+name: Check if name update is available
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  ejecutar_script:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout del repositorio
+      uses: actions/checkout@v4
+
+    - name: Configurar Python
+      uses: actions/setup-python@v4.7.0
+      with:
+        python-version: 3.11
+
+    - name: Instalar dependencias
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r test/requirements.txt
+
+    - name: Ejecutar el script
+      run: python test/name_update.py
+      env: 
+        APP_ID: ${{ secrets.APP_ID }}
+        AUTH_HEADER: ${{ secrets.AUTH_HEADER }}
+        APP_NAME: ${{ secrets.APP_NAME }}
