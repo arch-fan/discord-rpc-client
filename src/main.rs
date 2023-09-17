@@ -1,5 +1,5 @@
 use discord_rich_presence::{activity, DiscordIpc, DiscordIpcClient};
-use dotenv::{dotenv, var};
+use dotenvy::{dotenv, var};
 use std::{thread, time::Duration};
 
 mod app_updater;
